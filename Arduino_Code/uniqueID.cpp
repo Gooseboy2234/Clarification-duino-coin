@@ -1,9 +1,14 @@
 // Copyright © Luiz Henrique Cassettari. All rights reserved.
 // Licensed under the MIT license.
 
+// The below is a board power/system setting
 #pragma GCC optimize ("-Ofast")
 
+// Calls upon a hopefully installed libary
 #include "uniqueID.h"
+
+// The rest of the code asks the onboard chips and flash for their identification and stats
+// Majority of the parentheses are specific code that only applies if you have the listed board
 
 ArduinoUniqueID::ArduinoUniqueID()
 {
