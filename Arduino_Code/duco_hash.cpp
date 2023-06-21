@@ -1,5 +1,7 @@
+// Includes a libarry that's hopefully installed
 #include "duco_hash.h"
 
+// The below is a board power/system setting
 #pragma GCC optimize ("-Ofast")
 
 #define sha1_rotl(bits,word)     (((word) << (bits)) | ((word) >> (32 - (bits))))
@@ -125,6 +127,7 @@ void duco_hash_init(duco_hash_state_t * hasher, char const * prevHash) {
 	hasher->tempState[4] = e;
 }
 
+// No point in explaining nonce agian beacuse there is yet agian random dependencies that would aslo have to be explained
 void duco_hash_set_nonce(duco_hash_state_t * hasher, char const * nonce) {
 	uint8_t * b = hasher->buffer;
 
