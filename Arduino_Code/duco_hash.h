@@ -1,5 +1,6 @@
 #pragma once
 
+// Includes an arduino library
 #include <arduino.h>
 
 #define SHA1_BLOCK_LEN 64
@@ -16,4 +17,5 @@ struct duco_hash_state_t {
 
 void duco_hash_init(duco_hash_state_t * hasher, char const * prevHash);
 
+// nonce as in starting nonce, for anyone that understands PoST [Proof of space and time]
 uint8_t const * duco_hash_try_nonce(duco_hash_state_t * hasher, char const * nonce);
