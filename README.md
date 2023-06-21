@@ -3,6 +3,8 @@
 *** by revoxhere, 2019-2022
 -->
 
+IF YOU WERE LOOKING FOR A CODE EXPLANATION TO SOMETHING THAT DOES NOT CURRENTLY HAVE ONE, WE SADLY ARE IN CAPABLE OF HELPING YOU TO THAT EXTENT.
+
 <a href="https://duinocoin.com">
   <img src="https://github.com/revoxhere/duino-coin/blob/master/Resources/duco.png?raw=true" width="215px" align="right" />
 </a>
