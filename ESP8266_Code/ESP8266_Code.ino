@@ -34,6 +34,7 @@
   To install/upgrade it, go to the below link and
   follow the instructions of the readme file:
   https://github.com/esp8266/Arduino */
+// This starts to include those libary's
 #include <bearssl/bearssl.h>
 //#include <TypeConversion.h>
 
@@ -180,6 +181,7 @@ const char WEBSITE[] PROGMEM = R"=====(
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    // You might see this below appear extremely randomly during infuriating troubleshooting
     <title>Duino-Coin @@DEVICE@@ dashboard</title>
     <link rel="stylesheet" href="https://server.duinocoin.com/assets/css/mystyles.css">
     <link rel="shortcut icon" href="https://github.com/revoxhere/duino-coin/blob/master/Resources/duco.png?raw=true">
@@ -411,6 +413,7 @@ String chipID = "";
 String START_DIFF = "";
 
 // Loop WDT... please don't feed me...
+// Walter said that the above was funny [-Gooseboy2234]
 // See lwdtcb() and lwdtFeed() below
 Ticker lwdTimer;
 #define LWD_TIMEOUT   20000
@@ -421,8 +424,10 @@ unsigned long lwdTimeOutMillis = LWD_TIMEOUT;
 #define END_TOKEN  '\n'
 #define SEP_TOKEN  ','
 
+// Alows you to change the Built-In spesified LED
 #define LED_BUILTIN 2
 
+// How many times to flash when these things happen
 #define BLINK_SETUP_COMPLETE 2
 #define BLINK_CLIENT_CONNECT 3
 #define BLINK_RESET_DEVICE   5
@@ -453,6 +458,7 @@ void SetupWifi() {
 
 void SetupOTA() {
   // Prepare OTA handler
+  // OTA - Over The Air
   ArduinoOTA.onStart([]() {
     Serial.println("Start");
   });
@@ -622,6 +628,7 @@ struct MiningJob
 
 void setup() {
   Serial.begin(500000);
+  // This is infact why you have to use the serial monitor on that number
   Serial.println("\nDuino-Coin " + String(MINER_VER));
   pinMode(LED_BUILTIN, OUTPUT);
 
