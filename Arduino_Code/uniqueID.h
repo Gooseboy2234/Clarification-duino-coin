@@ -1,6 +1,9 @@
 // Copyright © Luiz Henrique Cassettari. All rights reserved.
 // Licensed under the MIT license.
 
+// Parentheses are diferent arduino boards and chips, except for on line 7
+
+// The below is a board power/system setting
 #pragma GCC optimize ("-Ofast")
 
 #ifndef _ARDUINO_UNIQUE_ID_H_
