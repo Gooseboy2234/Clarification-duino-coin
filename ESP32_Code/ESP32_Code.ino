@@ -785,6 +785,9 @@ void TaskMining(void *pvParameters) {
       TaskThreadData[taskId].difficulty = jobClient.readStringUntil(MSGNEWLINE).toInt() * 100;
       jobClient.flush();
       if (LED_BLINKING) digitalWrite(LED_BUILTIN, LOW);
+      // Change the part in brackets to HIGH if you would like the lights to remain off and flash accordingly.
+      // Rather than always on and flashing off
+      // Set line 870 to LOW for the full change to happen
 
       // Global Definitions
       unsigned int job_size_task_one = 100;
@@ -865,6 +868,9 @@ void TaskMining(void *pvParameters) {
           jobClient.flush();
           TaskThreadData[taskId].shares++;
           if (LED_BLINKING) digitalWrite(LED_BUILTIN, HIGH);
+          // Change the part in brackets to LOW if you would like the lights to remain off and flash accordingly.
+          // Rather than always on and flashing off
+          // Set line 787 to HIGH for the full change to happen
 
           // Print statistics
           Serial.println(String(taskCoreName + " retrieved job feedback: " + feedback + ", hashrate: " + (TaskThreadData[taskId].hashrate / 1000) + "kH/s, share #" + TaskThreadData[taskId].shares));
