@@ -72,6 +72,7 @@ typedef struct {
   DuinoIoT<DHT> duinoIoT;
 #endif
 // Uncomment the line below if you wish to use an AHT10 or AHT20 sensor (Duino IoT beta)
+// Those sensors espically are kind of cool, check them out online when you have time
 //#define USE_AHT
 #ifdef USE_AHT
   // Install "Adafruit AHTX0 Library" if you get an error
@@ -99,6 +100,7 @@ typedef struct {
       Serial.println("Test reading: " + String(temp.temperature) + "*C, " + String(hum.relative_humidity) + "% rH");
     }
 
+    // Calling the sensor to get information
     void getSensorData(SensorData_t *data) {
       sensors_event_t hum, temp;
       sensor.getEvent(&hum, &temp);
@@ -110,10 +112,13 @@ typedef struct {
   DuinoIoT<Adafruit_AHTX0> duinoIoT;
 #endif
 
+// I just figured out what they meant by adding coustom/your own support
+
 // Uncomment the line below if you wish to use an BMP280 sensor (Duino IoT beta)
 //#define USE_BMP280
 #ifdef USE_BMP280
 // Install "Adafruit BMP280 Library" if you get an error
+// Libary time!!
 # include <Adafruit_BMP280.h>
 # include <Wire.h>
 # define I2C_SDA_PIN 22
@@ -155,6 +160,7 @@ typedef struct {
   DuinoIoT<Adafruit_BMP280> duinoIoT;
 #endif
 
+// To blink or not to blink, but how many times?
 #define BLINK_SETUP_COMPLETE 2
 #define BLINK_CLIENT_CONNECT 3
 #define BLINK_RESET_DEVICE   5
@@ -164,6 +170,7 @@ const bool LED_BLINKING = true;
 // Define watchdog timer seconds
 #define WDT_TIMEOUT 60
 
+// You arleady heard what this below does
 // If optimizations cause problems, change them to -O0 (the default)
 #pragma GCC optimize ("-Ofast")
 
@@ -556,7 +563,9 @@ void dashboard() {
         totShares += TaskThreadData[i].shares;
   }
   avgDiff /= NUMBEROFCORES;
-  
+
+  // So this makes a little bit more sence now...
+
   s.replace("@@HASHRATE@@", String(totHash / 1000));
   s.replace("@@DIFF@@", String(avgDiff / 100));
   s.replace("@@SHARES@@", String(totShares));
@@ -658,6 +667,7 @@ void WiFireconnect(void *pvParameters) {
       }
 
       esp_task_wdt_reset();  // Reset watchdog timer
+      // I feel like I remember that watchdog "watches" for events that happen
       Serial.println();
       Serial.println(
         F("Please check if your WiFi network is on the list and check if "
@@ -665,6 +675,8 @@ void WiFireconnect(void *pvParameters) {
       Serial.println("ESP32 will reset itself after " + String(WDT_TIMEOUT) +
                      " seconds if can't connect to the network");
 
+                     // The above could be changed to be really quite funny
+       
       Serial.print("Connecting to: " + String(SSID));
       WiFi.reconnect();
     }
@@ -726,6 +738,9 @@ void TaskMining(void *pvParameters) {
     if (!jobClient.connect(host.c_str(), port)) {
       Serial.println(String(taskCoreName + " failed to connect"));
       delay(500);
+      // I wonder is you could shorten the delay or remove it alltogether and still have it work, if not better
+      // But it could just be here to match or be greater than a arleady placed serverside thing running
+      // Or does the board tattle on you if you try to do the above action?
       continue;
     }
 
@@ -888,6 +903,7 @@ void setup() {
   duinoIoT.begin();
 #endif
   WiFi.setSleep(false); // Better network responsiveness
+  // Sleeping would hurt mineing on HDD's, I wonder if it adds wear to chips like these....
   WiFi.mode(WIFI_STA);  // Setup ESP in client mode
   btStop();
   WiFi.begin(SSID, WIFI_PASS);  // Connect to wifi
@@ -1022,3 +1038,5 @@ void MqttPublishCode( void * pvParameters ) {
 void loop() {
   vTaskDelete(NULL); /* Free up The CPU */
 }
+
+// Could any more freeing ever be done?
