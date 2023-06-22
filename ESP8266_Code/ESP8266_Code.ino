@@ -744,7 +744,7 @@ void loop() {
   if (LED_BLINKING) digitalWrite(LED_BUILTIN, LOW);
    // Change the part in brackets to HIGH if you would like the lights to remain off and flash accordingly.
    // Rather than always on and flashing off
-   // Set line 758 to LOW for the full change to happen
+   // Set line 758 to LOW for the corresponding change to occur
   for (unsigned int duco_numeric_result = 0; duco_numeric_result < job.difficulty; duco_numeric_result++) {
     // Difficulty loop
     sha1_ctx = sha1_ctx_base;
@@ -758,7 +758,7 @@ void loop() {
       if (LED_BLINKING) digitalWrite(LED_BUILTIN, HIGH);
        // Change the part in brackets to LOW if you would like the lights to remain off and flash accordingly.
        // Rather than always on and flashing off
-       // Set line 744 to HIGH for the full change to happen
+       // Set line 744 to HIGH for the corresponding change to occur
       unsigned long elapsed_time = micros() - start_time;
       float elapsed_time_s = elapsed_time * .000001f;
       hashrate = duco_numeric_result / elapsed_time_s;
