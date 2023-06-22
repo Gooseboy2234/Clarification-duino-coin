@@ -883,9 +883,9 @@ void TaskMining(void *pvParameters) {
           jobClient.flush();
           TaskThreadData[taskId].shares++;
           if (LED_BLINKING) digitalWrite(LED_BUILTIN, HIGH);
-          // Change the part in brackets to HIGH if you would like the lights to remain off and flash accordingly.
+          // Change the part in brackets to LOW if you would like the lights to remain off and flash accordingly.
           // Rather than always on and flashing off
-          // Set line 870 to LOW for the corresponding change to occur
+          // Set line 870 to HIGH for the corresponding change to occur
 
           // Print statistics
           Serial.println(String(taskCoreName + " retrieved job feedback: " + feedback + ", hashrate: " + (TaskThreadData[taskId].hashrate / 1000) + "kH/s, share #" + TaskThreadData[taskId].shares));
